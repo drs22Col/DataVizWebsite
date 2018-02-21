@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Dom's website</title>
+    <title>Assignment 3</title>
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
   <body>
-    <h1>The Setton of D</h1>
-    <p>
+    <pre>  </pre>
+    <div style="text-align: center;">
+    <img src="assignment 3.jpg" style="max-width:100%"
+  </div>
+  <pre>   </pre>
+  <pre>   </pre>
+  <pre>   </pre>
+  <pre>   </pre>
+  <pre>   </pre>
+  <pre>   </pre>
+  <div style="text-align:center"
+
       <nav> <p>
-        <a href= "tabs/bio.html">
+        <a href= "assignment/assignment01.html">
         About me &nbsp &nbsp Data Viz &nbsp &nbsp Analysis &nbsp &nbsp Paintings &nbsp &nbsp Ghost Story
     </nav </p>
       <hr>

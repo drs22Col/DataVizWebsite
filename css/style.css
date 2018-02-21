@@ -1,13 +1,13 @@
 body {
-  background-color: white;
+  background-color: black;
 }
-head {color: black;
+head {color: white;
 text-align: left;
 font-family: Georgia serif;}
-h1 {color: black}
-nav {color: black;
+h1 {color: white}
+nav {color: white;
   text-align: right;}
   /nav
-p {color: black;
-  text-align: center;}
-  p {color: black}
+p {color: white;
+  text-align: right;}
+  p {color: white}
