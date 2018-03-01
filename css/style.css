@@ -1,14 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
 body {
-  background-color: black;
+  background-color:lightblue;
 }
-head {color: white;
-text-align: left;
-font-family: Georgia serif;}
-h1 {color: white}
+
+h1 {color: brown;
+text-align: center;
+font-family: Georgia serif;
+}
+
+h2 {color: black;
+text-align: center;
+font-family: Georgia serif;
+}
+
 nav {color: white;
-  text-align: right;}
+  text-align: right;
+}
   /nav
-p {color: white;
-  text-align: right;}
-  p {color: white}
+p {
+	color: white;
+  text-align: right;
+}
+  p 
+  {color: white;
+  }
   img style="text-align:center"
+ 
