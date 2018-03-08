@@ -33,6 +33,7 @@ function setup(){
 function draw(){
   background(255);
   fill(0);
+  textSize(18);
   for (var i = 0; i < 6; i++) {
     // noStroke();
     text(number[i], 20, map(number[i], 0, 50000, 750, 0));
