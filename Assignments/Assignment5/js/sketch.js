@@ -1,16 +1,4 @@
-<text src="js/sketch.js" Ultra-Expensive Manhattan Buildings</a></p>
-   </div>
-<p style="font-size:24px">&nbsp;&nbsp;WHERE ARE THE MOST EXPENSIVE BUILDINGS IN MANHATTAN?</p>
- <p style="font-size:24px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The Top 20 in Each of Five Wealthy Neighborhoods</p>
-   <div style="text-align:center"
-   </body>
- </html>
-  
-0  Assignments/Assignment5/js/.Rhistory
-No changes.
-  
-53  Assignments/Assignment5/js/sketch.js
-@@ -7,21 +7,21 @@
+
  // var textLeft = 30;
  var neighborhood = ["1","2","3","4","5"];
  // var number = ["0","10000", "20000", "30000", "40000", "50000"];
@@ -33,8 +21,7 @@ textSize(18);
    textFont('Roboto');
    console.log('Setup complete...');
    print(moviesTable.getRowCount() + ' rows loaded...');
-31,51 @@ function setup(){
- 
+}
  // ***** Draw function ***** //
  function draw(){
 
