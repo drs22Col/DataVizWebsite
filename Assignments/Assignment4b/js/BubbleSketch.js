@@ -1,7 +1,7 @@
 var maxLength = 1.5;
 
 function setup(){
-	createCanvas(800, 3000);
+	createCanvas(600, 600);
 	textSize(12);
 	}
 

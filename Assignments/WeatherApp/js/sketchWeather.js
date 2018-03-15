@@ -8,7 +8,7 @@ var description = '';
 var temperature = 0;
 var humidity = 0;
 var pressure = 0;
-var wind = 0;
+//var wind = 0;
 
 // **** Setup Function ****** //
 function setup(){
