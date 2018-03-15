@@ -46,7 +46,8 @@ textSize(18);
      // var yearPosition = map(year, 1916, 2017, leftX, rightX);
      // var scorePosition = map(moviesTable.getNum(i, 'vote_average'), 0, 10, bottomY, topY);
 
-fill(255,128,0);
+//fill(255,128,0);
+
 
 //map functions: define variables for rectangles and get data, mapped
      var q3 = moviesTable.getNum(i, 'Q3');
@@ -60,6 +61,7 @@ var q1map = map(q1, 0, 60000, 750, 0);
 var medianmap = map(median, 0, 60000, 750, 0);
 
   //draw rectangles
+  fill(200, i*50, 80);
     rect(i*130+100, q3map, 100, (q1map-q3map));
 
 
