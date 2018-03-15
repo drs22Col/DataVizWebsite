@@ -69,6 +69,7 @@ var medianmap = map(median, 0, 60000, 750, 0);
     
    fill(255);
     text(neighborhood[i], i*130+100, 790);
+   // text("Price per square foot($)", 5, 100);
    //making the top outlier
    var max = moviesTable.getNum(i, 'Max');
     var maxmap = map(max, 0, 60000, 750,0);
