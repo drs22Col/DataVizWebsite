@@ -1,0 +1,19 @@
+
+/*<style>*/
+ #wrapper{
+    border: 1px solid black;
+}
+.twoColumn{
+     width: 49%;
+     float:left;
+     border: 1px solid red;
+}
+/*button{*/
+    /*width: 50px;*/
+    /*height: 40px;*/
+    /*background: red;*/
+ } 
+
+/*img{ */
+   /*max-width: 100%;*/
+}
