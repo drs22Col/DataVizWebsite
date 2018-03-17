@@ -28,7 +28,7 @@ function queryAPI(){
 function getWeatherData(apiData){
   weatherData = apiData;
   description = weatherData.weather[0].description;
-  temperature = weatherData.main.temp;
+  temperatureK = weatherData.main.temp;
   humidity = weatherData.main.humidity;
   pressure = weatherData.main.pressure;
   wind = weatherData.main.wind;
@@ -36,13 +36,19 @@ function getWeatherData(apiData){
   redraw();
 }
 
+// convert from Kelvin to Fahrenheit 
+
+var temperatureFah = temperatureK * .45 - 459.67;
+
 // **** Draw Function **** //
+
+
 function draw(){
   background(225);
   if (weatherData){
     text('The current weather for ' + cityInput.value() + ' is:', 50, 50);
     text(description, 80, 70);
-    text(temperature + ' F', 80, 90);
+    text(temperatureFah + ' F', 80, 90);
     text(humidity + '% humidity', 80, 110);
     text(pressure + ' hPa (pressure)', 80, 130);
     //text(wind + ' mph', 80, 150);
