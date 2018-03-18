@@ -5,7 +5,7 @@ var weatherData;
 var button;
 var cityInput;
 var description = '';
-var temperature = 0;
+var temperatureK = 0;
 var humidity = 0;
 var pressure = 0;
 //var wind = 0;
@@ -38,7 +38,7 @@ function getWeatherData(apiData){
 
 // convert from Kelvin to Fahrenheit 
 
-var temperatureFah = temperatureK * .45 - 459.67;
+var temperatureFah = temperatureK * .45 - 459.67
 
 // **** Draw Function **** //
 
