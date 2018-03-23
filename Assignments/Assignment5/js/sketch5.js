@@ -45,9 +45,6 @@ function draw(){
 
 
 //draw gray horizontal grid lines 
-  
-
-    
   for (var i = 0; i < 12; i++) {
     //noStroke();
     stroke(100);
