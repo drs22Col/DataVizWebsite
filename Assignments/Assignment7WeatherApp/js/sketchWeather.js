@@ -38,7 +38,7 @@ function getWeatherData(apiData){
 
 // convert from Kelvin to Fahrenheit 
 
-var temperatureFah = temperatureK * .45 - 459.67
+// var temperatureFah = temperatureK * .45 - 459.67
 
 // **** Draw Function **** //
 
@@ -64,35 +64,35 @@ function draw(){
     // }
 }
 
-function IconGen(desc) {
-  var desc = desc.toLowerCase()
-  switch (desc) {
-    case 'drizzle':
-      addIcon(desc)
-      break;
-    case 'clouds':
-      addIcon(desc)
-      break;
-    case 'rain':
-      addIcon(desc)
-      break;
-    case 'snow':
-      addIcon(desc)
-      break;
-    case 'clear':
-      addIcon(desc)
-      break;
-    case 'thunderstom':
-      addIcon(desc)
-      break;
-    default:
-      $('div.clouds').removeClass('hide');
-  }
-}
+// function IconGen(desc) {
+//   var desc = desc.toLowerCase()
+//   switch (desc) {
+//     case 'drizzle':
+//       addIcon(desc)
+//       break;
+//     case 'clouds':
+//       addIcon(desc)
+//       break;
+//     case 'rain':
+//       addIcon(desc)
+//       break;
+//     case 'snow':
+//       addIcon(desc)
+//       break;
+//     case 'clear':
+//       addIcon(desc)
+//       break;
+//     case 'thunderstom':
+//       addIcon(desc)
+//       break;
+//     default:
+//       $('div.clouds').removeClass('hide');
+//   }
+// }
 
-function addIcon(desc) {
-  $('div.' + desc).removeClass('hide');
-}
+// function addIcon(desc) {
+//   $('div.' + desc).removeClass('hide');
+// }
 
 
- 
+//  

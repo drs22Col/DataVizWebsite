@@ -57,8 +57,8 @@ function draw(){
     text(wind + 'meters/second', 80, 150);
     text(cloudiness + 'percent cloudy', 80, 170);
   }
-//trying to convert from Kelvin to Fahrenheit 
-{TempInFahrenheit = Math.round(temperatureK * 2) -950;}
+// //trying to convert from Kelvin to Fahrenheit 
+// {TempInFahrenheit = Math.round(temperatureK * 2) -950;}
  // }
 
 
@@ -72,69 +72,69 @@ function draw(){
 //     }
 // }
 
-}
+// }
 
-function setUnitSystem(newSystem) {
-    localStorage.setItem("unit-system", newSystem);
-    $(".active").removeClass("active");
-    $("#" + newSystem).addClass("active");
-}
+// function setUnitSystem(newSystem) {
+//     localStorage.setItem("unit-system", newSystem);
+//     $(".active").removeClass("active");
+//     $("#" + newSystem).addClass("active");
+// }
 
-function getUnitSystem() {
-    var system = localStorage.getItem("unit-system");
+// function getUnitSystem() {
+//     var system = localStorage.getItem("unit-system");
     
-    // if system is unset or invalid, then determine it automatically
-    if (system != "metric" && system != "imperial") {
-        system = window.navigator.language == "en-US" ? "imperial" : "metric";
-    }
+//     // if system is unset or invalid, then determine it automatically
+//     if (system != "metric" && system != "imperial") {
+//         system = window.navigator.language == "en-US" ? "imperial" : "metric";
+//     }
     
-    setUnitSystem(system);
-    return system;
-}
+//     setUnitSystem(system);
+//     return system;
+// }
 
-function localizeTemperature(metric) {
-    metric = Math.round(metric);
-    if (getUnitSystem() == "imperial") {
-        return (metric * 9 / 5 + 32).toFixed(1) + "&deg;F";
-    } else {
-        return metric.toFixed(1) + "&deg;C";
-    }
-}
+// function localizeTemperature(metric) {
+//     metric = Math.round(metric);
+//     if (getUnitSystem() == "imperial") {
+//         return (metric * 9 / 5 + 32).toFixed(1) + "&deg;F";
+//     } else {
+//         return metric.toFixed(1) + "&deg;C";
+//     }
+// }
 
-function localizeSpeed(metric) {
-    var MILES_PER_METRE = 1 / 1609.344;
-    var HOURS_PER_SECOND = 1 / 60 / 60;
-    if (getUnitSystem() == "imperial") {
-        return (metric * MILES_PER_METRE / HOURS_PER_SECOND).toFixed(2) + " mph";
-    } else {
-        return metric.toFixed(2) + " m/s";
-    }
-}
+// function localizeSpeed(metric) {
+//     var MILES_PER_METRE = 1 / 1609.344;
+//     var HOURS_PER_SECOND = 1 / 60 / 60;
+//     if (getUnitSystem() == "imperial") {
+//         return (metric * MILES_PER_METRE / HOURS_PER_SECOND).toFixed(2) + " mph";
+//     } else {
+//         return metric.toFixed(2) + " m/s";
+//     }
+// }
 
     
-    var backgroundSrc = "https://raw.githubusercontent.com/meskarune/mylocalweather/gh-pages/assets/backgrounds/" + data.weather[0].icon + ".jpg";
-    var foregroundSrc = "https://raw.githubusercontent.com/meskarune/mylocalweather/gh-pages/assets/icons/" + data.weather[0].icon + ".png";
-    var temperature = localizeTemperature(data.main.temp);
-    var description = data.weather[0].description;
-    var windSpeed = localizeSpeed(data.wind.speed);
+//     var backgroundSrc = "https://raw.githubusercontent.com/meskarune/mylocalweather/gh-pages/assets/backgrounds/" + data.weather[0].icon + ".jpg";
+//     var foregroundSrc = "https://raw.githubusercontent.com/meskarune/mylocalweather/gh-pages/assets/icons/" + data.weather[0].icon + ".png";
+//     var temperature = localizeTemperature(data.main.temp);
+//     var description = data.weather[0].description;
+//     var windSpeed = localizeSpeed(data.wind.speed);
     
-    var dailyHigh = localizeTemperature(forecast.list[0].temp.max);
-    var dailyLow = localizeTemperature(forecast.list[0].temp.min);
+//     var dailyHigh = localizeTemperature(forecast.list[0].temp.max);
+//     var dailyLow = localizeTemperature(forecast.list[0].temp.min);
     
-    $("body").css("background", "url('" + backgroundSrc + "') no-repeat fixed 50% 50%")
-             .css("background-size", "cover");
-    $("#weather").empty()
-                 .append("<h2>" + data.name + "</h2>")
-                 .append("<img class='icon' src='" + foregroundSrc + "' />")
-                 .append("<span id='temp'>" + temperature + "</span>")
-                 .append("<p id='description'>" + data.weather[0].description + "</p>")
-                 .append("<p><span id='humidity'>" + data.main.humidity + "% humid</span>" +
-                            "<span id='wind-speed'>" + windSpeed + "</span></p>");
-    $("#forecast").empty()
-                  .append("<p id='daily'>Today's Forecast: " + forecast.list[0].weather[0].main + "</p>")
-                  .append("<p><span id='high'>High: " + dailyHigh + "</span>" +
-                             "<span id='low'>Low: " + dailyLow + "</span></p>");
-}
+//     $("body").css("background", "url('" + backgroundSrc + "') no-repeat fixed 50% 50%")
+//              .css("background-size", "cover");
+//     $("#weather").empty()
+//                  .append("<h2>" + data.name + "</h2>")
+//                  .append("<img class='icon' src='" + foregroundSrc + "' />")
+//                  .append("<span id='temp'>" + temperature + "</span>")
+//                  .append("<p id='description'>" + data.weather[0].description + "</p>")
+//                  .append("<p><span id='humidity'>" + data.main.humidity + "% humid</span>" +
+//                             "<span id='wind-speed'>" + windSpeed + "</span></p>");
+//     $("#forecast").empty()
+//                   .append("<p id='daily'>Today's Forecast: " + forecast.list[0].weather[0].main + "</p>")
+//                   .append("<p><span id='high'>High: " + dailyHigh + "</span>" +
+//                              "<span id='low'>Low: " + dailyLow + "</span></p>");
+// }
 
 // function getAndDisplayWeather() {
 //     var now = Math.round(Date.now() / 1000);
