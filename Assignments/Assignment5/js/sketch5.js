@@ -47,7 +47,7 @@ function draw(){
 //draw gray horizontal grid lines 
   for (var i = 0; i < 12; i++) {
     //noStroke();
-    stroke(100);
+    stroke(0);
     line(textLeft + 10, map(number[i], 0, 55000, bottomY, topY), rightX + 10, map(number[i], 0, 55000, bottomY, topY));
 
   }
