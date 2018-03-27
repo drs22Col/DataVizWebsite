@@ -13,6 +13,17 @@ var cloudiness = 0;
 var TempInFahrenheit = 0
 //var wind = 0;
 
+function preload() {
+  // we have included both an .ogg file and an .mp3 file
+  soundFormats('ogg', 'mp3');
+
+  // if mp3 is not supported by this browser,
+  // loadSound will load the ogg file
+  // we have included with our sketch
+  song = loadSound('Songs/here_comes_the_sun.mp3');
+}
+
+
 // **** Setup Function ****** //
 function setup(){
   createCanvas(800, 800);
@@ -57,9 +68,13 @@ function draw(){
     text(wind + 'meters/second', 80, 150);
     text(cloudiness + 'percent cloudy', 80, 170);
   }
-// //trying to convert from Kelvin to Fahrenheit 
+// convert from Kelvin to Fahrenheit 
 // {TempInFahrenheit = Math.round(temperatureK * 2) -950;}
  // }
+
+//var song;
+
+
 
 
 //   //Update Weather animation based on the returned weather description
@@ -190,7 +205,8 @@ function IconGen(desc) {
   var desc = desc.toLowerCase()
   switch (desc) {
     case 'drizzle':
-      addIcon(desc)
+      addIcon(desc);
+      song.play();
       break;
     case 'clouds':
       addIcon(desc)
@@ -216,3 +232,18 @@ function addIcon(desc) {
   $('div.' + desc).removeClass('hide');
 }
 
+function mousePressed() {
+  if ( song.isPlaying() ) { // .isPlaying() returns a boolean
+    song.pause();
+    background(255,0,0);
+  } else {
+    song.play(); // playback will resume from the pause position
+    background(0,255,0);
+  }
+}
+
+
+// song loaded during preload()
+
+
+  s

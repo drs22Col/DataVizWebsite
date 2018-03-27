@@ -1,4 +1,4 @@
-///global variables
+//global variables
  
  // var textLeft = 30;
 var neighborhood = ["Gramercy","Soho","Upper East Side","Upper West Side","West Village"];
@@ -152,45 +152,3 @@ function draw(){
 }
 
 
-
-var table;
-
-function preload() {
-  //my table is comma separated value "csv"
-  //and has a header specifying the columns labels
-  table = loadTable('assets/addresses.csv', 'csv', 'header');
-  //the file can be remote
-  //table = loadTable("http://p5js.org/reference/assets/mammals.csv",
-  //                  "csv", "header");
-}
-
-function setup() {
-  //count the columns
-  print(table.getRowCount() + ' total rows in table');
-  print(table.getColumnCount() + ' total columns in table');
-
-  print(table.getColumn('name'));
-  //["Goat", "Leopard", "Zebra"]
-
-  //cycle through the table
-  for (var r = 0; r < table.getRowCount(); r++)
-    for (var c = 0; c < table.getColumnCount(); c++) {
-      print(table.getString(r, c));
-    }
-}
- 
- }// ****** Mouse pressed function ******* //
-function mousePressed(){
-  if (mouseX >= buttonStartX && mouseX <= (buttonStartX + buttonLength) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)) {
-    selectedButton = 0;
-    redraw();
-  }
-  else if (mouseX >= (buttonStartX + buttonLength + buttonSpacing) && mouseX <= (buttonStartX + buttonLength * 2 + buttonSpacing) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)){
-    selectedButton = 1;
-    redraw();
-  }
-  else if (mouseX >= (buttonStartX + buttonLength + buttonSpacing) && mouseX <= (buttonStartX + buttonLength * 3 + buttonSpacing * 2) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)){
-    selectedButton = 2;
-    redraw();
-  }
-}

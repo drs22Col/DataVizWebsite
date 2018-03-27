@@ -1,4 +1,8 @@
-///global variables
+//creating points for interactive part
+
+
+
+//global variables
  
  // var textLeft = 30;
 var neighborhood = ["Gramercy","Soho","Upper East Side","Upper West Side","West Village"];
@@ -9,10 +13,11 @@ var bottomY = 750;
 var leftX = 40;
 var rightX = 750;
 var textLeft = 40;
+var outlierdots = [];
  
  //***** Preload function ***** //
 function preload(){
-    neighborhoodTable = loadTable('../Assignment5/Data/try.csv', 'csv', 'header');
+    neighborhoodTable = loadTable('Data/tryFor6.csv', 'csv', 'header');
    // console.log('Done loading table...');
  }
  
@@ -51,16 +56,16 @@ function draw(){
 
   }
    
- function drawLabels(){
-  fill(0);
-  textAlign(LEFT, CENTER);
-  text("ESTIMATED VALUE (DOLLARS) PER SQUARE FOOT", textLeft - 15, topY - 25);
-  for (var i = 0; i < 12; i++) {
-    noStroke();
-    text(i, textLeft, map(i, 0, 10, bottomY, topY));
-    stroke(200);
-    line(textLeft + 10, map(i, 0, 10, bottomY, topY), rightX + 10, map(i, 0, 10, bottomY, topY));
-  }
+ // function drawLabels(){
+ //  fill(0);
+ //  textAlign(LEFT, CENTER);
+ //  text("ESTIMATED VALUE (DOLLARS) PER SQUARE FOOT", textLeft - 15, topY - 25);
+ //  for (var i = 0; i < 12; i++) {
+ //    noStroke();
+ //    text(i, textLeft, map(i, 0, 10, bottomY, topY));
+ //    stroke(200);
+ //    line(textLeft + 10, map(i, 0, 10, bottomY, topY), rightX + 10, map(i, 0, 10, bottomY, topY));
+ //  }
 
 
 
@@ -101,10 +106,6 @@ function draw(){
     fill(255);
     text(neighborhood[i], i*130+100, 790);
 
-    fill(255);
-    rotate(PI/2);
-    text("Estimated dollar value per square foot", -width/2, -100);
-
 //making top bar of box plot, 1.5* IQR (Interquartile Range)
 
     stroke(200, i*50, 80);
@@ -125,6 +126,13 @@ function draw(){
     //making the other outliers
      var outlierone = neighborhoodTable.getNum(i,'OUTLIERONE');
      var outlieronemap = map(outlierone, 0, 55000, 750,0);
+
+outlierdots.push({
+  x: i*130+150,
+  y: outlieronemap,
+  address: "WHATEVER ADDRESS IS"
+});
+
      fill(255);
      ellipse(i*130+150, outlieronemap, 15, 15);
 
@@ -153,44 +161,45 @@ function draw(){
 
 
 
-var table;
 
-function preload() {
-  //my table is comma separated value "csv"
-  //and has a header specifying the columns labels
-  table = loadTable('assets/addresses.csv', 'csv', 'header');
-  //the file can be remote
-  //table = loadTable("http://p5js.org/reference/assets/mammals.csv",
-  //                  "csv", "header");
-}
+// var table;
 
-function setup() {
-  //count the columns
-  print(table.getRowCount() + ' total rows in table');
-  print(table.getColumnCount() + ' total columns in table');
+// function preload() {
+//   //my table is comma separated value "csv"
+//   //and has a header specifying the columns labels
+//   table = loadTable('assets/addresses.csv', 'csv', 'header');
+//   //the file can be remote
+//   //table = loadTable("http://p5js.org/reference/assets/mammals.csv",
+//   //                  "csv", "header");
+// }
 
-  print(table.getColumn('name'));
-  //["Goat", "Leopard", "Zebra"]
+// function setup() {
+//   //count the columns
+//   print(table.getRowCount() + ' total rows in table');
+//   print(table.getColumnCount() + ' total columns in table');
 
-  //cycle through the table
-  for (var r = 0; r < table.getRowCount(); r++)
-    for (var c = 0; c < table.getColumnCount(); c++) {
-      print(table.getString(r, c));
-    }
-}
+//   print(table.getColumn('name'));
+//   //["Goat", "Leopard", "Zebra"]
+
+//   //cycle through the table
+//   for (var r = 0; r < table.getRowCount(); r++)
+//     for (var c = 0; c < table.getColumnCount(); c++) {
+//       print(table.getString(r, c));
+//     }
+// }
  
- }// ****** Mouse pressed function ******* //
-function mousePressed(){
-  if (mouseX >= buttonStartX && mouseX <= (buttonStartX + buttonLength) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)) {
-    selectedButton = 0;
-    redraw();
-  }
-  else if (mouseX >= (buttonStartX + buttonLength + buttonSpacing) && mouseX <= (buttonStartX + buttonLength * 2 + buttonSpacing) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)){
-    selectedButton = 1;
-    redraw();
-  }
-  else if (mouseX >= (buttonStartX + buttonLength + buttonSpacing) && mouseX <= (buttonStartX + buttonLength * 3 + buttonSpacing * 2) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)){
-    selectedButton = 2;
-    redraw();
-  }
-}
+//  }// ****** Mouse pressed function ******* //
+// function mousePressed(){
+//   if (mouseX >= buttonStartX && mouseX <= (buttonStartX + buttonLength) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)) {
+//     selectedButton = 0;
+//     redraw();
+//   }
+//   else if (mouseX >= (buttonStartX + buttonLength + buttonSpacing) && mouseX <= (buttonStartX + buttonLength * 2 + buttonSpacing) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)){
+//     selectedButton = 1;
+//     redraw();
+//   }
+//   else if (mouseX >= (buttonStartX + buttonLength + buttonSpacing) && mouseX <= (buttonStartX + buttonLength * 3 + buttonSpacing * 2) && mouseY >= buttonStartY && mouseY <= (buttonStartY + buttonHeight)){
+//     selectedButton = 2;
+//     redraw();
+//   }
+// }

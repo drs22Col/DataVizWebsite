@@ -27,6 +27,12 @@ function setup(){
    print(neighborhoodTable.getRowCount() + ' rows loaded...');
    noLoop();
 }
+
+// push ();
+// translate(100,150);
+// rotate(-PI/2);
+// text("Estimated Value (Dollars) Per Square Foot", 0, 0);
+// pop();
  // ***** Draw function ***** //
 function draw(){
   background(20,0,185);
@@ -43,7 +49,6 @@ function draw(){
  //line(textLeft + 10, map(i, 0, 10, bottomY, topY), rightX + 10, map(i, 0, 10, bottomY, topY));
    }
 
-
 //draw gray horizontal grid lines 
   for (var i = 0; i < 12; i++) {
     //noStroke();
@@ -51,6 +56,20 @@ function draw(){
     line(textLeft + 10, map(number[i], 0, 55000, bottomY, topY), rightX + 10, map(number[i], 0, 55000, bottomY, topY));
 
   }
+   
+ // // function drawLabels(){
+ //  fill(0);
+ //  textAlign(LEFT, CENTER);
+ //  text("ESTIMATED VALUE (DOLLARS) PER SQUARE FOOT", textLeft - 15, topY - 25);
+ //  for (var i = 0; i < 12; i++) {
+ //    noStroke();
+ //    text(i, textLeft, map(i, 0, 10, bottomY, topY));
+ //    stroke(200);
+ //    line(textLeft + 10, map(i, 0, 10, bottomY, topY), rightX + 10, map(i, 0, 10, bottomY, topY));
+ //  }
+
+
+
    // noStroke();
   for (var i = 0; i < neighborhoodTable.getRowCount(); i++) {
      // var date = moviesTable.getString(i, 'release_date').split('-')[0];
@@ -87,6 +106,11 @@ function draw(){
     //labels for x axis 
     fill(255);
     text(neighborhood[i], i*130+100, 790);
+
+    // // fill(255);
+    // rotate(PI/2);
+    // text("Estimated dollar value per square foot", -width/2, -100);
+
 //making top bar of box plot, 1.5* IQR (Interquartile Range)
 
     stroke(200, i*50, 80);
@@ -108,6 +132,13 @@ function draw(){
      var outlierone = neighborhoodTable.getNum(i,'OUTLIERONE');
      var outlieronemap = map(outlierone, 0, 55000, 750,0);
      fill(255);
+
+//creating points for interactive part
+var x = i*130+150; 
+var y = outlieronemap;
+
+
+
      ellipse(i*130+150, outlieronemap, 15, 15);
 
      var outliertwo = neighborhoodTable.getNum(i,'OUTLIERTWO');
