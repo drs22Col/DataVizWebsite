@@ -16,7 +16,7 @@ var chocolateSong;
 var properties = [];
 var showingPropertyDetail = null;
 
-var landUseColors = ["", "", "purple", "", "pink", "orange"];
+var landUseColors = ["", "", "purple", "", "pink", "blue"];
 
  //***** Preload function ***** //
 function preload(){
