@@ -19,7 +19,7 @@ var properties = [];
  //***** Preload function ***** //
 function preload(){
     AvgAssessedTable = loadTable('./Data/ZipCode4.csv', 'csv', 'header');
-    / 
+    
  }
 
  // ***** Setup function ***** //
