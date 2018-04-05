@@ -18,14 +18,15 @@ h2
   text-transform: uppercase;
   letter-spacing: 2px;
   padding: 10px;
-  text-align: center;
+  text-align: left;
+  margin-left: 4%;
 }
 
 
 #p_indent
 {
   font-size:14px; 
-  margin-left: 10%; 
-  margin-right: 20%;
+  margin-left: 2%; 
+  margin-right: 50%;
 }
 
