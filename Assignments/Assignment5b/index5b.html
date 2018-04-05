@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Assignment 6</title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"> -->
+    <style>
+
+    body {
+      background-color: #FBF8F2;
+    }
+
+      h1 {
+    text-align: left;
+    font-size: 32px;
+    }
+
+    nav {
+      text-align: left;
+      margin-left: 2%;
+    }
+
+    aside {
+        position: absolute;
+        top: 200px;
+        left: 100px;
+        background: white;
+        padding: 20px;
+        border: 5px solid black;
+        border-radius: 10px;
+        box-shadow: 0 0 20px black;
+        animation: asideOut 0.5s forwards;
+        animation-delay: 1s;
+    }
+    aside.active {
+        animation: asideIn 0.5s forwards;
+    }
+
+    @keyframes asideIn {
+        from { transform: scale(0, 0); }
+          to { transform: scale(1, 1); }
+    }
+    @keyframes asideOut {
+        from { transform: scale(1, 1); }
+          to { transform: scale(0, 0); }
+    }
+    </style>
+  <!-- Link to the p5.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.sound.min.js"></script> -->
+</head>
+<body>
+  <nav><a href="https://drs22col.github.io/DataVizWebsite/">Home</a></p>
+      </nav>
+      <h1 style="font-size:24px; padding-left: 1em";>WHERE ARE THE MOST EXPENSIVE ASSETS IN MANHATTAN?</h1>
+      <p style="font-size:24px; padding-left: 5em";>The Top 20 in Each of Five Wealthy Neighborhoods</p>
+
+      <p style="font-size:24px; padding-left: 1em;">By Mode</p>
+
+      <aside></aside>
+    <!-- Link to p5 sketch file -->
+    <script src="js/SketchMode6.js"></script>
+
+
+  </body>
+</html>
