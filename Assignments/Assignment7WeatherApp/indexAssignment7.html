@@ -1,76 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>p5.js Weather App</title>
+    <title>Weather App</title>
+
+    <link rel="stylesheet" type="text/css" href="css7/style.css">
     <!-- Google fonts code -->
     <!--  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700" rel="stylesheet">-->
     <!-- Link to the p5.js libraries -->
     <script language="javascript" type="text/javascript" src="js/p5.js"></script>
     <script language="javascript" type="text/javascript" src="js/p5.dom.js"></script>
     <script language="javascript" type="text/javascript" src="js/p5.sound.js"></script>
-    <!-- Link to p5 sketch file -->
-    <script language="javascript" type="text/javascript" src="js/sketchWeather.js"></script>
+    <script language="javascript" type="text/javascript" src="js/sketchWeatherTRIAL.js"></script>
+    <script language="javascript" type="text/javascript" src="js/weatherAnimations.js"></script>
+
+    
   </head>
-  <body>
-    <div class="title">
-      <h1>A Weather App</h1>
+ <body>
+    <div class= "title">
+      <h2><i>The Music and Motion Weather App</i></h2>
     </div>
-    <p>Query the OpenWeatherMap API for: <input id="city" value="New York"></input><button id="submit">Query</button></p>
+    <p id= p_indent> This app is designed to take advantage of the sound and animation possibilities of p5 libraries. Depending on if it is sunny or cloudy, snowing or raining, you will hear a different song and see a different animation. And the song for the rain animation will also change if there's a thunderstorm.</p> 
 
- <!--      <div class="container">
-  <div class="row">  
-        <header class="col-xs-12 text-center">
-      </header>
+    <p id= p_indent> Possible cities to try for different effects: Aomori (gets the most snow in the world), Yuma (in Arizona, and very sunny), Mawsynram (typically rainy), Buffalo (cloudy), and Kampala (a city in Africa where thunder is heard on average 242 days of the year). If there is no thunderstorm in Kampala today, you can go to http://en.blitzortung.org/live_lightning_maps.php for a live lightning map, and then choose cities in the states or countries where lightning is striking.</p> 
 
-      <div class="col-xs-8 col-xs-offset-2">
-        <div class="text-center status">
-          <p><span id="city"></span> <span id="country"></span></p>
-          <p><span id="temp"></span><span class="temp" id="tempunit" ></span></p>
-          <p id="desc"></p>
-        </div>
+    <p id= p_indent> To pause a song, simply click your mouse. Or if it's a favorite, turn up the volume!</p>
+ 
 
-        <div class="text-center all-icon">
-          <div class="icon sun-shower hide ">
-            <div class="cloud"></div>
-            <div class="sun">
-              <div class="rays"></div>
-            </div>
-            <div class="rain"></div>
-          </div>
-          <div class="icon thunder-storm hide thunderstom">
-            <div class="cloud"></div>
-            <div class="lightning">
-              <div class="bolt"></div>
-              <div class="bolt"></div>
-            </div>
-          </div>
-          <div class="icon cloudy hide clouds">
-            <div class="cloud"></div>
-            <div class="cloud"></div>
-          </div>
-          <div class="icon flurries hide snow">
-            <div class="cloud"></div>
-            <div class="snow">
-              <div class="flake"></div>
-              <div class="flake"></div>
-            </div>
-          </div>
-          <div class="icon sunny hide clear">
-            <div class="sun">
-              <div class="rays"></div>
-            </div>
-          </div>
-          <div class="icon rainy hide rain">
-            <div class="cloud"></div>
-            <div class="rain"></div>
+    <!-- <div id=main class="center">
+        <script text-align="center" language="javascript" type="text/javascript" src="js/6/sketch_NYC.js"></script>
+      </div> -->
+      <div>
+        <p id = p_indent>Let's see, and hear, the weather for <input id="city" value="New York"></input><button id="submit">Search</button></p>
       </div>
-    </div>
-  </div>
-
-
-
 
   </body>
-</html>
-
-     -->
+  </html>

@@ -1,9 +1,8 @@
 //global variables
- 
- // var textLeft = 30;
+
 var neighborhood = ["Gramercy","Soho","Upper East Side","Upper West Side","West Village"];
  // var number = ["0","10000", "20000", "30000", "40000", "50000"];
-var number = [0, 5000, 10000, 15000, 20000, 25000, 30000, 35000, 40000, 45000, 50000, 55000];
+var cost = [0, 2500, 5000, 7500, 10000, 12500, 15000,17500, 20000, 22500, 25000, 27500, 30000, 32500, 35000, 37500, 40000, 42500, 45000, 47500, 50000, 52500, 55000];
 var topY = 40;
 var bottomY = 750;
 var leftX = 40;
@@ -19,8 +18,6 @@ function preload(){
  // ***** Setup function ***** //
 function setup(){
    createCanvas(800, 800);
-   // textAlign(RIGHT, CENTER);
-
    textSize(18);
    textFont('Roboto');
    console.log('Setup complete...');
@@ -28,56 +25,40 @@ function setup(){
    noLoop();
 }
 
-// push ();
-// translate(100,150);
-// rotate(-PI/2);
-// text("Estimated Value (Dollars) Per Square Foot", 0, 0);
-// pop();
+function addyaxisLabel() {
+  push ();
+translate(100,150);
+rotate(-PI/2);
+text("Estimated Value (Dollars) Per Square Foot", 0, 0);
+pop();
+}
  // ***** Draw function ***** //
 function draw(){
   background(20,0,185);
+  addyaxisLabel();
 
 //Label Y axis numbers
   fill(255);
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < 23; i++) {
      // noStroke();
 
-  text(number[i], 20, map(number[i], 0, 55000, 750, 40));
-  print(number[i]);
+  text(cost[i], 20, map(cost[i], 0, 55000, 750, 40));
+  print(cost[i]);
   textSize(18);
-     // stroke(200);
- //line(textLeft + 10, map(i, 0, 10, bottomY, topY), rightX + 10, map(i, 0, 10, bottomY, topY));
    }
 
 //draw gray horizontal grid lines 
-  for (var i = 0; i < 12; i++) {
+  for (var i = 0; i < 23; i++) {
     //noStroke();
     stroke(0);
-    line(textLeft + 10, map(number[i], 0, 55000, bottomY, topY), rightX + 10, map(number[i], 0, 55000, bottomY, topY));
+    line(textLeft + 10, map(cost[i], 0, 55000, bottomY, topY), rightX + 10, map(number[i], 0, 55000, bottomY, topY));
 
   }
    
- // // function drawLabels(){
- //  fill(0);
- //  textAlign(LEFT, CENTER);
- //  text("ESTIMATED VALUE (DOLLARS) PER SQUARE FOOT", textLeft - 15, topY - 25);
- //  for (var i = 0; i < 12; i++) {
- //    noStroke();
- //    text(i, textLeft, map(i, 0, 10, bottomY, topY));
- //    stroke(200);
- //    line(textLeft + 10, map(i, 0, 10, bottomY, topY), rightX + 10, map(i, 0, 10, bottomY, topY));
- //  }
-
-
-
+//making the bars 
    // noStroke();
   for (var i = 0; i < neighborhoodTable.getRowCount(); i++) {
-     // var date = moviesTable.getString(i, 'release_date').split('-')[0];
-     // var year = parseInt(date);
-     // var yearPosition = map(year, 1916, 2017, leftX, rightX);
-     // var scorePosition = map(moviesTable.getNum(i, 'vote_average'), 0, 10, bottomY, topY);
-
-//fill(255,128,0);
+   
 
 //map functions: define variables for rectangles and get data 
     var q3 = neighborhoodTable.getNum(i, 'Q3');
@@ -107,16 +88,10 @@ function draw(){
     fill(255);
     text(neighborhood[i], i*130+100, 790);
 
-    // // fill(255);
-    // rotate(PI/2);
-    // text("Estimated dollar value per square foot", -width/2, -100);
-
 //making top bar of box plot, 1.5* IQR (Interquartile Range)
 
     stroke(200, i*50, 80);
     line(i*132+90, topbarmap, i*133+189, topbarmap);
-
-   // text("Price per square foot($)", 5, 100);
 
    //Making the vertical line for the top bar
     stroke(200, i*50, 80);
@@ -159,9 +134,8 @@ var y = outlieronemap;
  strokeStyle = 255;
  line(60, 760, 780, 760);
  line(80, 20, 80, 780);
-   //text("abcdfsdfs",400, 790);
+
  }
-  //making the other outliers
 }
 
 

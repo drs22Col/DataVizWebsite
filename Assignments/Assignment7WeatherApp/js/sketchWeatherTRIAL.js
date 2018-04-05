@@ -1,249 +1,116 @@
-// **** Global Variables ***** //
-var apiKey = 'b51108f7b72966280bcdfff37e9092b3';
+// **** Global
+var APIkey = 'b51108f7b72966280bcdfff37e9092b3';
 var baseURL = 'http://api.openweathermap.org/data/2.5/weather?q=';
 var weatherData;
+var city;
+var country;
+var cityName;
 var button;
 var cityInput;
+var windSpeed;
 var description = '';
-var temperatureK = 0;
-var humidity = 0;
-var pressure = 0;
-var wind = 0;
-var cloudiness = 0;
-var TempInFahrenheit = 0
-//var wind = 0;
+var temperature = 0;
+var temperatureF = 0;
+var temperatureF_round = 999;
+var song;
+var SunSong;
+var CloudySong;
+var SnowSong;
+var ThunderSong;
+var RainSong;
+var backgd; //background
+
 
 function preload() {
-  // we have included both an .ogg file and an .mp3 file
-  soundFormats('ogg', 'mp3');
-
-  // if mp3 is not supported by this browser,
-  // loadSound will load the ogg file
-  // we have included with our sketch
-  song = loadSound('Songs/here_comes_the_sun.mp3');
+  soundFormats('mp3');
+  SunSong = loadSound('Songs/Sun.mp3');
+  CloudySong = loadSound('Songs/Cloudy.mp3');
+  SnowSong = loadSound('Songs/Snow.mp3');
+  ThunderSong = loadSound('Songs/Thunder.mp3');
+  RainSong = loadSound('Songs/Rain.mp3');
 }
 
-
-// **** Setup Function ****** //
 function setup(){
-  createCanvas(800, 800);
+  createCanvas(700,500);
+  setupAnimations();
   button = select('#submit');
-  cityInput = select('#city');
-  button.mousePressed(queryAPI);
-  noLoop();
+  city = select('#city');
+  button.mouseClicked(queryAPI);
 }
 
-// **** Query API Function *** //
 function queryAPI(){
-  var request = baseURL + cityInput.value() + '&apikey=' + apiKey;
-  loadJSON(request, getWeatherData);
+  var request = baseURL + city.value() +'&apikey=' + APIkey;
+  // console.log(request)
+  loadJSON(request, getWeatherData)
 }
-
-function getWeatherData(apiData){
-  weatherData = apiData;
-  description = weatherData.weather[0].description;
-  weatherIcon = weatherData.weather[0].icon;
-  temperatureK = weatherData.main.temp;
-  humidity = weatherData.main.humidity;
-  pressure = weatherData.main.pressure;
-  wind = weatherData.wind.speed;
-  cloudiness = weatherData.clouds.all;
-  print(weatherData);
-  redraw();
-}
-
-
  
+function getWeatherData(APIData){
+    animations.reset();
+  weatherData = APIData;
+  weatherDescription = weatherData.weather[0].main.toLowerCase();
+  temperature = weatherData.main.temp;
+  country = weatherData.sys.country;
+  cityName = weatherData.name;
+  temperatureF = (temperature-273.15)*1.8+32;
+  temperatureF_round = Math.round(temperatureF);
 
-// **** Draw Function **** //
+  //song
+  if (song) song.stop();
+  song = null;
+  switch (weatherDescription){
+      case "rain":
+      case "drizzle":
+          song = RainSong;
+          break;
+      case "sun":
+      case "clear":
+          song = SunSong;
+          break;
+      case "clouds":
+      case "mist":
+      case "fog":
+      case "haze":
+          song = CloudySong;
+          break;
+      case "snow":
+          song = SnowSong;
+          break;
+      case "thunderstorm":
+          song = ThunderSong;
+          break;
+  }
+  if (song) song.play();
+
+  // console.log(temperatureF)
+  // console.log(temperatureF_round)
+  console.log(weatherDescription);
+  console.log(weatherData);
+  //redraw();
+}
+
+function mouseClicked(){
+    if (song){
+        if (song.isPlaying()) song.pause();
+        else song.play();
+    }
+}
+
 
 function draw(){
-  background(205);
+    if (animations[weatherDescription]) animations[weatherDescription]();
+    else background(200);
   if (weatherData){
-    text('The current weather for ' + cityInput.value() + ' is:', 50, 50);
-    text(description, 80, 70);
-    text(temperatureK + ' F', 80, 90);
-    text(humidity + '% humidity', 80, 110);
-    text(pressure + ' hPa (pressure)', 80, 130);
-    text(wind + 'meters/second', 80, 150);
-    text(cloudiness + 'percent cloudy', 80, 170);
+    textAlign(CENTER, CENTER)
+    fill(255,255,255,200)
+    textSize(25)
+    text(cityName+", "+country, width/2, (height/3)+20)
+    fill(255,255,255,200)
+    textSize(80)
+    text(temperatureF_round + 'F', width/2, (height/2)+30)
+    fill(255,255,255, 200)
+    textSize(150)
+
   }
-// convert from Kelvin to Fahrenheit 
-// {TempInFahrenheit = Math.round(temperatureK * 2) -950;}
- // }
 
-//var song;
-
-
-
-
-//   //Update Weather animation based on the returned weather description
-//    var weather = json.weather[0].description;
-//     if(weather.indexOf("rain") >= 0) {
-//         skycons.set("animated-icon", Skycons.RAIN);
-//     }
-//     else if (weather.indexOf("sunny") >= 0) {
-//         skycons.set("animated-icon", Skycons.CLEAR_DAY);
-//     }
-// }
-
-// }
-
-// function setUnitSystem(newSystem) {
-//     localStorage.setItem("unit-system", newSystem);
-//     $(".active").removeClass("active");
-//     $("#" + newSystem).addClass("active");
-// }
-
-// function getUnitSystem() {
-//     var system = localStorage.getItem("unit-system");
-    
-//     // if system is unset or invalid, then determine it automatically
-//     if (system != "metric" && system != "imperial") {
-//         system = window.navigator.language == "en-US" ? "imperial" : "metric";
-//     }
-    
-//     setUnitSystem(system);
-//     return system;
-// }
-
-// function localizeTemperature(metric) {
-//     metric = Math.round(metric);
-//     if (getUnitSystem() == "imperial") {
-//         return (metric * 9 / 5 + 32).toFixed(1) + "&deg;F";
-//     } else {
-//         return metric.toFixed(1) + "&deg;C";
-//     }
-// }
-
-// function localizeSpeed(metric) {
-//     var MILES_PER_METRE = 1 / 1609.344;
-//     var HOURS_PER_SECOND = 1 / 60 / 60;
-//     if (getUnitSystem() == "imperial") {
-//         return (metric * MILES_PER_METRE / HOURS_PER_SECOND).toFixed(2) + " mph";
-//     } else {
-//         return metric.toFixed(2) + " m/s";
-//     }
-// }
-
-    
-//     var backgroundSrc = "https://raw.githubusercontent.com/meskarune/mylocalweather/gh-pages/assets/backgrounds/" + data.weather[0].icon + ".jpg";
-//     var foregroundSrc = "https://raw.githubusercontent.com/meskarune/mylocalweather/gh-pages/assets/icons/" + data.weather[0].icon + ".png";
-//     var temperature = localizeTemperature(data.main.temp);
-//     var description = data.weather[0].description;
-//     var windSpeed = localizeSpeed(data.wind.speed);
-    
-//     var dailyHigh = localizeTemperature(forecast.list[0].temp.max);
-//     var dailyLow = localizeTemperature(forecast.list[0].temp.min);
-    
-//     $("body").css("background", "url('" + backgroundSrc + "') no-repeat fixed 50% 50%")
-//              .css("background-size", "cover");
-//     $("#weather").empty()
-//                  .append("<h2>" + data.name + "</h2>")
-//                  .append("<img class='icon' src='" + foregroundSrc + "' />")
-//                  .append("<span id='temp'>" + temperature + "</span>")
-//                  .append("<p id='description'>" + data.weather[0].description + "</p>")
-//                  .append("<p><span id='humidity'>" + data.main.humidity + "% humid</span>" +
-//                             "<span id='wind-speed'>" + windSpeed + "</span></p>");
-//     $("#forecast").empty()
-//                   .append("<p id='daily'>Today's Forecast: " + forecast.list[0].weather[0].main + "</p>")
-//                   .append("<p><span id='high'>High: " + dailyHigh + "</span>" +
-//                              "<span id='low'>Low: " + dailyLow + "</span></p>");
-// }
-
-// function getAndDisplayWeather() {
-//     var now = Math.round(Date.now() / 1000);
-//     if (localStorage.getItem("timestamp") && localStorage.getItem("timestamp") <= now - 1800) {
-//         renderFromCache();
-//     } else {
-//         getWeather(function() {
-//             localStorage.setItem("timestamp", now);
-//             renderFromCache();
-//         });
-//     }
-// }
-
-// $(function() {
-//     $("#imperial, #metric").on("click", function() {
-//         setUnitSystem(this.id);
-//         renderFromCache();
-//     });
-    
-//     getUnitSystem();
-//     getAndDisplayWeather();
-// });
-
-//experiment with model:
-
-// var tempUnit = 'K';
-// var currentTempInKelvin;
-
-//   // $("#tempunit").click(function () {
-//   //   var currentTempUnit = $("#tempunit").text();
-//   //   var newTempUnit = currentTempUnit == "K" ? "K" : "F";
-//   //   $("#tempunit").text(newTempUnit);
-//   //   if (newTempUnit == "F") {
-//   //     var fahTemp = Math.round(parseInt($("#temp").text()) * 9 / 5 - 459.67);
-//   //     $("#temp").text(fahTemp + " " + String.fromCharCode(176));
-//   //   } else {
-//       $("#temp").text(currentTempInCelsius + " " + String.fromCharCode(176));
-//     }
-//   });
-  
-// })
- 
-  //     currentTempInFahrenheit = Math.round(result.main.temp * 2) -450;
-  //     $("#temp").text(currentTempInCelsius + " " + String.fromCharCode(176));
-  //     $("#tempunit").text(tempUnit);
-  //     $("#desc").text(result.weather[0].main);
-  //     IconGen(result.weather[0].main);
-  //   }
-  // });
-}
-
-function IconGen(desc) {
-  var desc = desc.toLowerCase()
-  switch (desc) {
-    case 'drizzle':
-      addIcon(desc);
-      song.play();
-      break;
-    case 'clouds':
-      addIcon(desc)
-      break;
-    case 'rain':
-      addIcon(desc)
-      break;
-    case 'snow':
-      addIcon(desc)
-      break;
-    case 'clear':
-      addIcon(desc)
-      break;
-    case 'thunderstom':
-      addIcon(desc)
-      break;
-    default:
-      $('div.clouds').removeClass('hide');
   }
-}
 
-function addIcon(desc) {
-  $('div.' + desc).removeClass('hide');
-}
-
-function mousePressed() {
-  if ( song.isPlaying() ) { // .isPlaying() returns a boolean
-    song.pause();
-    background(255,0,0);
-  } else {
-    song.play(); // playback will resume from the pause position
-    background(0,255,0);
-  }
-}
-
-
-// song loaded during preload()
-
-
-  s
