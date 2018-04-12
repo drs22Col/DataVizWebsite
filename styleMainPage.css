@@ -66,6 +66,81 @@ li a:hover {
     color: white;
 }
 
+
+  .thumbnail {
+    size: 40%;
+    float: left; 
+    width: -30%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+  }
+
+/*img {float: left; 
+  width: 100%; 
+  margin-right: 2%; 
+  margin-bottom: 0.5em;">*/
+
+  #Graph {
+    size: 20%;
+    float: left;
+    width: 20%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+  }
+  #Bubbles {
+   size: 60%;
+    float: left;
+    width: 80%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+
+  }
+
+  #Colors {  
+   size: 20%;
+    float: left;
+    width: 20%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+  }
+
+#Weather {
+  size: 20%;
+    float: left;
+    width: 60%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+
+}
+
+#Interactive {
+size: 20%;
+    float: left;
+    width: 60%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+
+}
+
+#Critique {
+size: 20%;
+    float: left;
+    width: 70%;
+    margin-right: 2%;
+    margin-bottom: 0.5em;
+
+
+}
+
+
+
+}
+
+
+}
+
+
+}
 </style>
 
 
