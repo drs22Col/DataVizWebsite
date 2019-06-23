@@ -1,0 +1,32 @@
+
+
+body 
+{
+  font-family: Garamond, sans-serif;
+  color: black;
+  overflow: hidden;
+  background-color: #FBF8F2;
+}
+
+h2
+{ 
+  color: #CC0000;
+  width: 100%;
+  display: block;
+  font-size: 24px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 10px;
+  text-align: left;
+  margin-left: 4%;
+}
+
+
+#p_indent
+{
+  font-size:14px; 
+  margin-left: 2%; 
+  margin-right: 50%;
+}
+
